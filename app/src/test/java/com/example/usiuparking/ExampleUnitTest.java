@@ -1,4 +1,4 @@
-package com.example.popinclient;
+package com.example.usiuparking;
 
 import org.junit.Test;
 

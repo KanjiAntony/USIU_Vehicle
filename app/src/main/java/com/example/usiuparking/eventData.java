@@ -1,4 +1,4 @@
-package com.example.popinclient;
+package com.example.usiuparking;
 
 public class eventData {
     String event_name;
