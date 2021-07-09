@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_reserves"
+            android:icon="@drawable/reservation"
+            android:title="Reservation"/>
+
+    <item
+            android:id="@+id/navigation_inventory"
+            android:icon="@drawable/inventory"
+            android:title="Inventory"/>
+
+    <item
+            android:id="@+id/navigation_account"
+            android:icon="@drawable/account"
+            android:title="Account"/>
+
+    <item
+            android:id="@+id/navigation_scanner"
+            android:icon="@drawable/scanner"
+            android:title="Scanner"/>
+
+</menu>

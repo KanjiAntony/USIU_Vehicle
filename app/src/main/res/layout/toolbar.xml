@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#691cff"
+    android:elevation="4dp"
+    android:navigationIcon="@mipmap/page_logo"
+    android:theme="?attr/actionBarTheme"
+    android:minHeight="?attr/actionBarSize"
+    >
+
+</androidx.appcompat.widget.Toolbar>

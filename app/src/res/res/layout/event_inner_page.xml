@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202a48">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/event_navigation">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/event_navigation"
+            android:scrollbars="vertical"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                    <ImageView
+                        android:id="@+id/pic_event_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/bahama"
+                        android:foreground="@drawable/img_bg"
+                        android:scaleType="centerCrop"/>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <!--this button is for taking a user to the previous page-->
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+
+                        <!---this button is for activating a phone's share functionality-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="right"
+                            android:clickable="true">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_share_black_24dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_event_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hart Uplugged"
+                        android:textColor="#f200ee"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:padding="7dp"
+                        app:fontFamily="@font/open_sans" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="7dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_location_on_black_24dp"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/txt_event_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Kenyatta Conference Center"
+                            android:textSize="14sp"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="15dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="7dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_date_range_black_24dp"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/txt_event_start_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Fri, 20 October"
+                            android:textSize="14sp"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="15dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans"
+                            android:text="-"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="15dp"/>
+
+                        <TextView
+                            android:id="@+id/txt_event_stop_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Fri, 20 October"
+                            android:textSize="14sp"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="15dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="7dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_access_time_black_24dp"
+                            android:layout_gravity="center"/>
+
+
+                        <TextView
+                            android:id="@+id/txt_event_start_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="22:00"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#fff"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/open_sans"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="#fff"
+                            android:textSize="14sp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/poppins"/>
+
+                        <TextView
+                            android:id="@+id/txt_event_end_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="04:00"
+                            android:textColor="#fff"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/open_sans"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tickets Available"
+                    android:textColor="#f200ee"
+                    android:textAllCaps="true"
+                    android:textSize="18sp"
+                    android:padding="7dp"
+                    app:fontFamily="@font/josefin_sans" />
+
+
+
+
+
+
+
+                <!--<ScrollView
+                    android:id="@+id/scrollable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toRightOf="parent"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent">-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ticket_type_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                <!--</ScrollView>  -->
+
+            </LinearLayout>
+            <!--end of overall linear layout-->
+
+
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        app:menu="@menu/events_navigation"
+         android:id="@+id/event_navigation"/>
+
+
+</RelativeLayout>

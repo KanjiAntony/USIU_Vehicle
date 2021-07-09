@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="reg_country">
+        <item>Kenya</item>
+    </string-array>
+
+    <string-array name="drink_category">
+        <item>Beer</item>
+        <item>Wines and Spirits</item>
+        <item>Gin</item>
+        <item>Rum</item>
+        <item>Brandys</item>
+        <item>Soft Drink</item>
+    </string-array>
+
+    <string-array name="reserve_category">
+        <item>VIP Table</item>
+        <item>Lounge Table</item>
+        <item>Regular Table</item>
+    </string-array>
+
+    <string-array name="event_category">
+        <item>Auto, Boat and Air</item>
+        <item>Business and Professional</item>
+        <item>Community and Culture</item>
+        <item>Family and Education</item>
+        <item>Fashion and Beauty</item>
+        <item>Film, Media and Entertainment</item>
+        <item>Food and Drink</item>
+        <item>Health and LifeStyle</item>
+        <item>Music</item>
+        <item>Performing and Visual Arts</item>
+        <item>Science and Technology</item>
+        <item>Sports and Fitness</item>
+    </string-array>
+
+    <string-array name="open_days">
+        <item>Everyday</item>
+        <item>Weekdays</item>
+        <item>Weekends</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+</resources>
