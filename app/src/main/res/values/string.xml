@@ -1,38 +1,11 @@
 <resources>
-    <string name="app_name">Popin</string>
+    <string name="app_name">USIU Parking</string>
     <string name="add_btn">Save</string>
-    <string name="upload_drink">Upload Drink</string>
-    <string name="product_category">Category</string>
-    <string name="product_name">Name</string>
-    <string name="product_size">Size</string>
-    <string name="product_price">Price</string>
-    <string name="product_desc">Description</string>
-
-    <string name="upload_event">Upload Event</string>
-    <string name="event_category">Event Category</string>
-    <string name="event_name">Enter Event Name</string>
-    <string name="reserve_open_days">Event Date</string>
-    <string name="reserve_open_time">Event Time</string>
-    <string name="event_stop_date">Ends On</string>
-    <string name="reserve_close_time">Ends At</string>
-    <string name="reserve_location">Venue</string>
-    <string name="event_capacity">Capacity</string>
-    <string name="event_price">Price</string>
-    <string name="event_desc">Description</string>
-
-    <string name="upload_reserve">Upload Table</string>
-    <string name="reserve_category">Category</string>
-    <string name="reserve_name">Name of table</string>
-    <string name="reserve_venue">Location</string>
-    <string name="reserve_tables">Total No. of Tables</string>
-    <string name="reserve_tables_seats">Seats in table</string>
-    <string name="reserve_price">Price per seat</string>
-    <string name="reserve_desc">Description</string>
 
     <string name="login_data">Don\'t have an account?</string>
     <string name="login_forgotpass_data">Forgot Password?</string>
     <string name="login_signup_data">Sign Up</string>
-    <string name="footer">Copyright Pop-In</string>
+    <string name="footer">Copyright USIU Paking</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

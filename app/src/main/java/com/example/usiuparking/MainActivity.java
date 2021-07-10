@@ -16,8 +16,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,17 +34,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    InventoryEventTicketAdapter adapter;
+    InventorySlotsAdapter adapter;
     RecyclerView recyclerView;
     BottomNavigationView bottom_view;
-    private static final String BASE_URL = "https://popin.co.ke/Mobile/Client/";
+    private static final String BASE_URL = "https://carparking.twigahillfarm.co.ke/Mobile/";
     String active_user_id;
     Toolbar toolbar;
     ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeContainer;
     public SearchView searchView;
 
-    List<eventData> list;
+    List<slotData> list;
     RequestQueue requestQueue;
 
     @Override
@@ -59,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        recyclerView = (RecyclerView)findViewById(R.id.events_recycler);
-        adapter = new InventoryEventTicketAdapter(list, getApplication());
+        recyclerView = (RecyclerView)findViewById(R.id.slots_recycler);
+        adapter = new InventorySlotsAdapter(list, getApplication());
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(MainActivity.this,
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            volleyJsonObjectRequest(BASE_URL+"show_all_events.php");
+            volleyJsonObjectRequest(BASE_URL+"show_all_slots.php");
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -112,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 // once the network request has completed successfully.
                 try {
                     adapter.clear();
-                    volleyJsonObjectRequest(BASE_URL+"show_all_events.php");
+                    volleyJsonObjectRequest(BASE_URL+"show_all_slots.php");
                     swipeContainer.setRefreshing(false);
                 } catch(JSONException e) {
                     e.printStackTrace();
@@ -125,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        bottom_view = (BottomNavigationView)findViewById(R.id.event_navigation);
+        bottom_view = (BottomNavigationView)findViewById(R.id.slots_navigation);
         botton_nav_clicked();
 
-        searchView =(SearchView)findViewById(R.id.search_bar); //(SearchView) searchItem.getActionView();
+/*        searchView =(SearchView)findViewById(R.id.search_bar); //(SearchView) searchItem.getActionView();
        // searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -140,43 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 adapter.getFilter().filter(newText);
                 return false;
             }
-        });
+        });*/
 
-        //if back button is pressed
-        ImageButton back_btn = (ImageButton)findViewById(R.id.btn_back);
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
     }
-
-
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 1: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-    }*/
 
     public void load_recycler(String json) throws JSONException
     {
@@ -194,19 +159,17 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
             }
 
-            list.add(new eventData(jObject.getString("event_name"),jObject.getString("event_start_date"), jObject.getString("event_stop_date"),
-                    jObject.getString("event_start_time"),jObject.getString("event_stop_time"),jObject.getString("event_venue"),
-                    jObject.getString("event_poster"),jObject.getString("event_id")));
+            list.add(new slotData(jObject.getString("slot_name"),jObject.getString("slot_availability"), jObject.getString("slot_id")));
         }
 
     }
 
     public void volleyJsonObjectRequest(String url) throws JSONException {
 
-        String  REQUEST_TAG = "popin.co.ke";
+        String  REQUEST_TAG = "USIU_Parking_Slots";
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Showing Events...");
+        progressDialog.setMessage("Showing parking slots...");
         progressDialog.show();
 
         StringRequest jsonObjectReq = new StringRequest(Request.Method.POST,url,
@@ -217,8 +180,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                         try {
-
-                           // Toast.makeText(ReserveActivity.this,response,Toast.LENGTH_LONG).show();
 
                             load_recycler(response);
 
@@ -232,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 try {
 
-                    volleyJsonObjectRequest(BASE_URL+"show_all_events.php");
+                    volleyJsonObjectRequest(BASE_URL+"show_all_slots.php");
                 } catch(JSONException e) {
                     e.printStackTrace();
                 }
@@ -254,23 +215,12 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()) {
 
-                    case R.id.navigation_events:
+                    case R.id.navigation_home:
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
 
                         break;
 
-                    case R.id.navigation_reserves:
-                        //Intent i2 = new Intent(getApplicationContext(), ReserveActivity.class);
-                        //startActivity(i2);
-
-                        break;
-
-                    case R.id.navigation_home :
-                        Intent i3 = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i3);
-
-                        break;
 
                 }
 
