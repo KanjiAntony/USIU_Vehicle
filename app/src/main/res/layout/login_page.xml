@@ -54,6 +54,15 @@
                     android:inputType="textPassword"
                     android:padding="13dp"
                     android:textColorHint="#3F51B5" />
+
+                <Spinner
+                    android:id="@+id/ability_status_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/et_bg"
+                    android:padding="13dp" />
+
                 <Button
                     android:text="Login"
                     android:layout_width="match_parent"

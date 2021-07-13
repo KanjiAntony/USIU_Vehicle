@@ -12,7 +12,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,7 +32,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     BottomNavigationView bottom_view;
     private static final String BASE_URL = "https://carparking.twigahillfarm.co.ke/Mobile/";
-    String active_user_id;
+    String active_user_id,active_user_ability_status;
     Toolbar toolbar;
     ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeContainer;
@@ -47,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
     List<slotData> list;
     RequestQueue requestQueue;
 
+    private String KEY_LOGGED = "LoggedStat";
+    private String PREF_NAME = "Pop-InSession";
+    private static final String KEY_USER_ID = "UserId";
+    private static final String KEY_USER_ABILITY = "UserAbility";
+
+    private SessionHandler session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar2);
         toolbar.setTitle(null);
+
+        session = new SessionHandler(getApplicationContext());
+
+        SharedPreferences sp = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if (sp.getBoolean(KEY_LOGGED, false)) {
+            active_user_id = sp.getString(KEY_USER_ID, "");
+            active_user_ability_status = sp.getString(KEY_USER_ABILITY, "");
+        } else  {
+            Intent i = new Intent(getApplicationContext(), LoginPage.class);
+            startActivity(i);
+        }
 
         list = new ArrayList<>();
 
@@ -200,7 +223,16 @@ public class MainActivity extends AppCompatActivity {
                 VolleyLog.d("Error: " + error.getMessage());
                 progressDialog.hide();
             }
-        });
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> httpParams = new HashMap<>();
+                httpParams.put(KEY_USER_ABILITY,active_user_ability_status);
+                return httpParams;
+            }
+
+        };
 
         // Adding JsonObject request to request queue
           //  requestQueue.add(jsonObjectReq);
