@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     BottomNavigationView bottom_view;
     private static final String BASE_URL = "https://carparking.twigahillfarm.co.ke/Mobile/";
-    String active_user_id,active_user_ability_status;
+    String active_user_id,active_user_ability_status, active_parking_location;
     Toolbar toolbar;
     ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeContainer;
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private String PREF_NAME = "Pop-InSession";
     private static final String KEY_USER_ID = "UserId";
     private static final String KEY_USER_ABILITY = "UserAbility";
+    private static final String KEY_PARKING_LOCATION = "ParkingLocation";
 
     private SessionHandler session;
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getBoolean(KEY_LOGGED, false)) {
             active_user_id = sp.getString(KEY_USER_ID, "");
             active_user_ability_status = sp.getString(KEY_USER_ABILITY, "");
+            active_parking_location = sp.getString(KEY_PARKING_LOCATION, "");
         } else  {
             Intent i = new Intent(getApplicationContext(), LoginPage.class);
             startActivity(i);
@@ -229,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> httpParams = new HashMap<>();
                 httpParams.put(KEY_USER_ABILITY,active_user_ability_status);
+                httpParams.put(KEY_PARKING_LOCATION,active_parking_location);
                 return httpParams;
             }
 

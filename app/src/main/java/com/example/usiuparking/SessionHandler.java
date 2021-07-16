@@ -10,6 +10,7 @@ public class SessionHandler {
     private static final String PREF_NAME = "Pop-InSession";
     private static final String KEY_USER_ID = "UserId";
     private static final String KEY_USER_ABILITY = "UserAbility";
+    private static final String KEY_PARKING_LOCATION = "ParkingLocation";
     private static final String KEY_EXPIRES = "Expires";
     private static final String KEY_LOGGED = "LoggedStat";
     private static final String KEY_EMPTY = "";
@@ -26,10 +27,11 @@ public class SessionHandler {
     }
 
     //login user and save userid as session
-    public void login(String UserId,String UserAbility)
+    public void login(String UserId,String UserAbility, String ParkingLocation)
     {
         mEditor.putString(KEY_USER_ID,UserId);
         mEditor.putString(KEY_USER_ABILITY,UserAbility);
+        mEditor.putString(KEY_PARKING_LOCATION,ParkingLocation);
         mEditor.putBoolean(KEY_LOGGED,true);
 
         //set user session for 1 minute
@@ -74,6 +76,7 @@ public class SessionHandler {
         User user = new User();
         user.setUserID(mPreferences.getString(KEY_USER_ID,KEY_EMPTY));
         user.setUserAbility(mPreferences.getString(KEY_USER_ABILITY,KEY_EMPTY));
+        user.setParkingLocation(mPreferences.getString(KEY_PARKING_LOCATION,KEY_EMPTY));
         user.setSessionExpiryDate(new Date(mPreferences.getLong(KEY_EXPIRES,0)));
 
         return user;

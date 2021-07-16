@@ -6,6 +6,7 @@ public class User {
 
     String UserID;
     String UserAbility;
+    String ParkingLocation;
     Date sessionExpiryDate;
 
     public void setUserID(String user)
@@ -16,6 +17,11 @@ public class User {
     public void setUserAbility(String user_ability)
     {
         this.UserAbility = user_ability;
+    }
+
+    public void setParkingLocation(String parking_location)
+    {
+        this.ParkingLocation = parking_location;
     }
 
     public void setSessionExpiryDate(Date expiry)
@@ -31,6 +37,10 @@ public class User {
     public String getUserAbility()
     {
         return UserAbility;
+    }
+
+    public String getParkingLocation() {
+        return ParkingLocation;
     }
 
     public Date getSessionExpiryDate()
